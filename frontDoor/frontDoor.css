@@ -1,0 +1,9 @@
+body {background-color: rgb(85, 85, 85);}
+
+#toMainHoleFirstTime { 
+    visibility: hidden;
+}
+
+img {
+    visibility: hidden;
+}

@@ -1,0 +1,10 @@
+body {background-color: brown;}
+
+#takeCar { 
+    visibility: hidden;
+}
+
+#feedDog {
+    visibility: hidden;
+}
+
