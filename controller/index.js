@@ -70,7 +70,10 @@ function look() {
     }
 }
 
-
+//diningRoom Scene
+if (readStatus("moxie") > 0) {
+    document.getElementById("key_img").style.visibility="visible";
+ }
 
 
 /* document.addEventListener("click", myScript); */
