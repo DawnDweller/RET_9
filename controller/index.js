@@ -58,6 +58,7 @@ function seeButler_1() {
     document.getElementById("Butler_1Lean").style.visibility="hidden";
 }
 
+//mainHole Scene
 function look() {
     alert("You saw something.");
     let moxie = readStatus("moxie");
@@ -74,25 +75,67 @@ function look() {
 if (readStatus("moxie") > 0) {
     document.getElementById("key_img").style.visibility="visible";
  }
-
-
 /* document.addEventListener("click", myScript); */
 
-//car scene
-function cigarettes() {
-    let cigarettes;
-    cigarettes = confirm("Rachel: I love my lungs.");
-    if(cigarettes==true){
-        alert("Rachel: Fuck lungs. I now am alive :D");
+
+function chalice() {
+    let chalice;
+    chalice = confirm("Butler: Would you like to have some wine while you're waiting for your uncle, my dear?");
+    if(chalice==true){
+        alert("Rachel: Aa.. Sure. Thank you.");
         let sharpness = readStatus ("sharpness");
         sharpness += +2;
         writeStatus("sharpness", sharpness);
-      } else {
+        
+        alert("Butler: You are welcome dear. Enjoy your drink. This wine is the very finest of our marvelous collection. Do you understand?");
+        alert("Rachel: I... I think... so...");
+        alert("Butler: Well, I cannot emphasize how much I am glad to here that dear. You see in 1978, we have been preparing the most finest ingrediants to achive such perfection. First, a person must understand how to feel a fine wine in order to.............");
+        alert("Rachel: I... I don't feel...");
+        var audio2 = new Audio ("../sounds/grim1.mp3");
+        audio2.play();
+        document.getElementsByClassName("butler_1")[0].style.visibility="hidden";
+        document.getElementsByClassName("butler_1")[1].style.visibility="hidden";
+        document.getElementById("passOut").style.visibility="visible";
+        
+
+       /*  document.querySelector("html").addEventListener("keypress", disappear);
+        function disappear(event) { keypress eklemeye çalıştım. Bu normalde çalışıyor ama bu kadar dallanmış donksiyonda 
+        keypress'şerini console.log'a bile çıkarmıyor.
+            if(event.key === "h"){
+                this.style.visibility="hidden";
+            } else {
+                this.style.visibility="visible";
+            }
+                }; */
+        
+            document.getElementById("passOut").addEventListener("click", disappear);
+            function disappear () {
+                    this.style.visibility="hidden";
+                }
+        
+        document.getElementById("mainHole2").style.visibility="visible";
+        
+        } else {
         let moxie = readStatus("moxie");
         moxie += +2;
-        writeStatus("moxie", moxie) // Burdaki moxie'yi diğer js'lerdeki ile birleştirmeliyim ama nasıl?
-      }                                          //Hocam tam bu aşağıya 0 koymalısın!
-    document.getElementsByClassName("cigarettes")/*   */[0]/*   */.style.visibility="hidden";
+        writeStatus("moxie", moxie) // Burdaki moxie'yi diğer js'lerdeki ile birleştirmeliyim ama nasıl? Tab ki de local strage ya da session Strage metodu:)
+        
+        var audio1 = new Audio ("../sounds/farAwayWomanScream.mp3");
+        
+        audio1.onended = function () {
+            alert("Rachel: What was THAT?!"); 
+            alert("Butler: Oh my! I better check that.");
+            document.getElementById("mainHole2").style.visibility="visible";
+                                                      //Hocam tam bu aşağıya 0 koymalısın!
+            document.getElementsByClassName("butler_1")/*   */[0]/*   */.style.visibility="hidden";
+            
+        };
+        audio1.play();
+        
+        document.getElementsByClassName("butler_1")/*   */[1]/*   */.style.visibility="hidden";
+        
+      }                                          
+    
 }
 function map() {
     document.getElementById("map").style.visibility="visible";

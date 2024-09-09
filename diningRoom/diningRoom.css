@@ -1,3 +1,12 @@
 #key_img {
     visibility: hidden;
 }
+#passOut{
+    visibility: hidden;
+}
+#mainHole2{
+    visibility: hidden;
+}
+.butler_1{
+    visibility: visible;
+}
