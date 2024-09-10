@@ -10,7 +10,7 @@ function intilizeStatus (status) {
 
 intilizeStatus ({
     sharpness: 0,
-    courage: 0,
+    linear: 0,
     moxie: 0,
     knowledge: 0,
 });
@@ -135,11 +135,32 @@ function chalice() {
         document.getElementsByClassName("butler_1")/*   */[1]/*   */.style.visibility="hidden";
         
       }                                          
-    
+      let linear = readStatus ("linear");
+      linear += +1;
+        writeStatus("linear", linear);
 }
 function map() {
     document.getElementById("map").style.visibility="visible";
     alert("Rachel: Weather is getting darker. Better take the shortcut.");
     document.getElementById("map").style.visibility="hidden";
     document.querySelector("a").style.visibility="visible";
+}
+
+
+
+
+//Linear Progress Tracker
+if (readStatus("linear") >= 1) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde yartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
+    document.getElementById("backDoor").style.visibility="visible";
+    document.getElementById("getInside").style.visibility="hidden";
+}
+
+//Crypt :) Path
+function toKrypt() {
+    if (readStatus("linear") >= 2) {
+        document.getElementById("riverButton").style.visibility="hidden";
+        document.getElementById("riverAchor").style.visibility="visible";
+    } else {
+        alert("Rachel to herself: There seems to be a skull carving on the tree's surface.");
+    }
 }

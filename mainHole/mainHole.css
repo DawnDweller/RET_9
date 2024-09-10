@@ -8,3 +8,6 @@ body {background-color: brown;}
     visibility: hidden;
 }
 
+#backDoor {
+    visibility: hidden;
+}
