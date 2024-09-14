@@ -12,7 +12,7 @@ intilizeStatus ({
     sharpness: 0,
     linear: 0,
     moxie: 0,
-    knowledge: 0,
+    bone: 0,
 });
 
 function readStatus(key) {
@@ -29,13 +29,8 @@ function writeStatus (key, value) {
 }
 
 
-
-
-
 //frontDoor scene
 //Kapı button olcak, kapının önüne gif ile knock knock konulabilir.
-
-
 
 function appearButler_1 () {
     if(readStatus("linear") === 3) {
@@ -94,7 +89,7 @@ function studyRoom() {
     } else {
         var audio7 = new Audio ("../sounds/lockedDoor.mp3");
         audio7.onended = function () {
-            alert("Rachel: The door's locked. Even though I cannot make it out, I can here two men arguing about something.");
+            alert("Rachel: The door's locked. Even though I could not make it out, I've just heard two men arguing about something inside. They went silent when I tried the door.");
         };
         audio7.play();
     }
@@ -174,6 +169,19 @@ function map() {
     document.getElementById("map").style.visibility="hidden";
     document.querySelector("a").style.visibility="visible";
 }
+function bone() {
+    if(readStatus("linear") === 4) {
+        document.getElementById("dogFood").style.visibility="hidden";
+    let bone = readStatus ("bone");
+      bone += +1;
+        writeStatus("bone", bone);
+    alert("Food taken.");
+    } else {
+        alert("Butler: Oh, dear. Are you hungry?");
+        alert("Rachel: Oh no! I was just lookin'. Sorry. I didn't mean to...");
+        alert("Butler: Huh.");
+    } 
+}
 
 //Linear Progress Tracker
 if (readStatus("linear") >= 4) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde şartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
@@ -246,4 +254,41 @@ function takeMansionKey() {
         document.getElementById("dig4button").style.visibility="hidden";
         document.getElementById("earthDig2").style.visibility="hidden";
         document.getElementById("mansionKeyImg").style.visibility="hidden";    
+}
+
+//studyRoom
+//1) Dog Mechanics
+function feed() {
+    var question1 = confirm("Something inside... Should I check?");
+    if (readStatus("bone") === 1 && question1 === true) {     
+        alert("You had the dog fed.");
+        let bone = readStatus ("bone");
+        bone += +1;
+        writeStatus("bone", bone);//bone should be equel to 2 at this state.
+        document.getElementById("dog1").style.visibility="hidden";
+        document.getElementById("dog2").style.visibility="visible";
+        var audio8 = new Audio ("../sounds/sniffingDog.mp3");
+        audio8.play();
+        console.log(question1);
+    }else if (readStatus("bone") === 1 && question1 === false) {
+        alert("Rachel: Curiosity killes the cat, doesn't it?");
+        console.log(question1);
+    } else if (readStatus("bone") === 0 && question1 === true) {
+        alert("Rachel: I have nothing to attract it.");
+        console.log(question1);
+    } else {
+        alert("Rachel: It'll not benefit me afterall.");
+        console.log(question1);
+    }
+}
+function pet() {
+    var audio9 = new Audio ("../sounds/happyDogBark2.mp3");
+    audio9.play();
+    document.getElementById("dog2").style.visibility="hidden";
+    document.getElementById("dogThanks").style.visibility="visible";
+    setTimeout(function () {
+        document.getElementById("dog2").style.visibility="visible";
+        document.getElementById("dogThanks").style.visibility="hidden";
+        audio9.play();
+    }, 750);
 }

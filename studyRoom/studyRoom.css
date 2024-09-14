@@ -1,0 +1,9 @@
+html {
+    background-color: rgba(74, 74, 74, 0.368);
+}
+#dog2 {
+    visibility: hidden;
+}
+#dogThanks {
+    visibility: hidden;
+}
