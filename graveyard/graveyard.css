@@ -1,3 +1,31 @@
 html{
     background-color: brown;
 }
+#tombstoneImg {
+    visibility: hidden;
+}
+#dig2button {
+    visibility: hidden;
+}
+#tombstoneImg {
+    visibility:"hidden";
+}
+#dig2button {
+    visibility: hidden;
+}
+#dig3button {
+    visibility: hidden;
+}
+#earthDig1 {
+    visibility: hidden;
+}
+#dig4button {
+    visibility: hidden;
+}
+#earthDig2 {
+    visibility: hidden;
+}
+#mansionKeyImg {
+    visibility: hidden;
+}
+

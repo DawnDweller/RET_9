@@ -11,3 +11,7 @@ body {background-color: brown;}
 #backDoor {
     visibility: hidden;
 }
+
+#studyRoomAnchor {
+    visibility: hidden;
+}

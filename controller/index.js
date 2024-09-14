@@ -38,8 +38,20 @@ function writeStatus (key, value) {
 
 
 function appearButler_1 () {
-    document.getElementById("Butler_1Lean").style.visibility="visible";
-    document.getElementById("knock1").style.visibility="hidden";
+    if(readStatus("linear") === 3) {
+        var audio01 = new Audio ("../sounds/doorCreak.mp3");
+        audio01.onended = function () {
+            document.getElementById("Butler_1Lean").style.visibility="visible";
+            document.getElementById("knock1").style.visibility="hidden";
+        };
+        audio01.play();
+    } else {
+        var audio0 = new Audio ("../sounds/doorKnock.mp3");
+        audio0.play();
+        let linear = readStatus ("linear");
+        linear += +1;
+        writeStatus("linear", linear);
+    }   
 }
 
 function seeButler_1() {
@@ -70,11 +82,28 @@ function look() {
         nodeList[i].style.visibility = "hidden";
     }
 }
+function studyRoom() {
+    if(readStatus("linear") === 5) {
+        var audio6 = new Audio ("../sounds/doorUnlocked.mp3");
+        audio6.onended = function () {
+            alert("Unlocked. You have used Mansion Key.");
+            document.getElementById("studyRoomAnchor").style.visibility="visible";
+            document.getElementById("studyRoomUnlockButton").style.visibility="hidden";
+        };
+        audio6.play();
+    } else {
+        var audio7 = new Audio ("../sounds/lockedDoor.mp3");
+        audio7.onended = function () {
+            alert("Rachel: The door's locked. Even though I cannot make it out, I can here two men arguing about something.");
+        };
+        audio7.play();
+    }
+}
 
 //diningRoom Scene
-if (readStatus("moxie") > 0) {
+/* if (readStatus("moxie") > 0) {
     document.getElementById("key_img").style.visibility="visible";
- }
+ } */
 /* document.addEventListener("click", myScript); */
 
 
@@ -146,21 +175,75 @@ function map() {
     document.querySelector("a").style.visibility="visible";
 }
 
-
-
-
 //Linear Progress Tracker
-if (readStatus("linear") >= 1) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde yartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
+if (readStatus("linear") >= 4) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde şartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
     document.getElementById("backDoor").style.visibility="visible";
     document.getElementById("getInside").style.visibility="hidden";
 }
 
 //Crypt :) Path
 function toKrypt() {
-    if (readStatus("linear") >= 2) {
+    if (readStatus("linear") >= 10) {
         document.getElementById("riverButton").style.visibility="hidden";
         document.getElementById("riverAchor").style.visibility="visible";
     } else {
         alert("Rachel to herself: There seems to be a skull carving on the tree's surface.");
     }
+}
+
+//Graveyard
+function dig1() {
+    if(readStatus("linear") === 4)  {
+        document.getElementById("tombstoneImg").style.visibility="visible";
+        document.getElementById("dig2button").style.visibility="visible";
+    }else{
+        alert("Rachel: There is nothing I could find here.")
+    }
+    
+}
+
+function dig2() {
+    
+    var audio2 = new Audio ("../sounds/digginSound.mp3");
+    audio2.onended = function () {
+        document.getElementById("dig3button").style.visibility="visible";
+        document.getElementById("earthDig1").style.visibility="visible";
+        
+    };
+    audio2.play();
+}
+function dig3() {
+    var audio3 = new Audio ("../sounds/digginSound.mp3");
+    audio3.onended = function () {
+        document.getElementById("dig4button").style.visibility="visible";
+        document.getElementById("earthDig2").style.visibility="visible";
+    };
+    audio3.play();
+}
+function dig4() {
+      
+    var audio4 = new Audio ("../sounds/digginSound.mp3");
+    audio4.onended = function () {
+        document.getElementById("mansionKeyImg").style.visibility="visible";
+    };
+    audio4.play(); 
+}
+function takeMansionKey() {
+   
+    var audio5 = new Audio ("../sounds/keyPickup.mp3");
+    audio5.onended = function () {
+        alert("You have got the 'Mansion Key'.");
+        let linear = readStatus ("linear");
+        linear += +1;
+        writeStatus("linear", linear);//linear should be equel to 3 at this state.
+    };
+    audio5.play();
+        
+        document.getElementById("tombstoneImg").style.visibility="hidden";
+        document.getElementById("dig2button").style.visibility="hidden";
+        document.getElementById("dig3button").style.visibility="hidden";
+        document.getElementById("earthDig1").style.visibility="hidden";
+        document.getElementById("dig4button").style.visibility="hidden";
+        document.getElementById("earthDig2").style.visibility="hidden";
+        document.getElementById("mansionKeyImg").style.visibility="hidden";    
 }
