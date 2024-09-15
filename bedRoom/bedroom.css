@@ -1,0 +1,21 @@
+html {
+    background-color: rgba(9, 45, 9, 0.718);
+}
+#fB1D{
+    visibility: hidden;
+}
+#fB2D {
+    visibility: hidden;
+}
+#fFD {
+    visibility: hidden;
+}
+#chandelierDropped {
+    visibility: hidden;
+}
+.finalAim {
+    visibility: hidden;
+}
+#toBalcony {
+    visibility: hidden;
+}

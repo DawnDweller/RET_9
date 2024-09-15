@@ -1,0 +1,12 @@
+html {
+    background-color: rgba(4, 118, 128, 0.336);
+}
+#rachelDead {
+    visibility: hidden;
+}
+#billDead {
+    visibility: hidden;
+}
+.killAim {
+    visibility: hidden;
+}

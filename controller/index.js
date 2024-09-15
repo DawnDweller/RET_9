@@ -13,6 +13,8 @@ intilizeStatus ({
     linear: 0,
     moxie: 0,
     bone: 0,
+    ammo: 2,
+    gun: 1,
 });
 
 function readStatus(key) {
@@ -292,3 +294,238 @@ function pet() {
         audio9.play();
     }, 750);
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//FINALLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+//bedRoomFinal
+
+/*     document.addEventListener("keydown", function (event) {
+        if(readStatus("gun") === 1) {
+            console.log(event.key);
+            if(event.key==="Control"){
+                for(let i=0; i<=3; i++) {
+                    this.getElementsByClassName("finalAim")[i].style.visibility="visible";
+                }           
+            }  
+        } else if (readStatus("gun") >= 9) {
+            console.log(event.key);
+            if(event.key==="Control"){
+                for(let i=0; i<=0; i++) {
+                    this.getElementsByClassName("killAim")[i].style.visibility="visible";
+                    
+                }
+                if(event.key==="s" && readStatus("ammo") >= 1) {
+                    this.getElementById("rachelDead").style.visibility="visible";
+                    this.getElementById("rachelAlive").style.visibility="hidden";
+                    alert("Ending3");
+                    //gunshot sound effect
+                } else if (event.key==="k" && readStatus("ammo") >= 1 && bone===2) {
+                    this.getElementById("billDead").style.visibility="visible";
+                    this.getElementById("billAlive").style.visibility="hidden";
+                    alert("Ending6");
+                    //gunshot sound effect
+                } else if (event.key==="k" && readStatus("ammo") >= 1 && bone !=2) {
+                    this.getElementById("billDead").style.visibility="visible";
+                    this.getElementById("billAlive").style.visibility="hidden";
+                    alert("Ending5");
+                    //gunshot sound effect
+                } else {
+                    //empty gun sound effect
+                    alert("Ending4");
+                }
+            }  
+        }
+    }); */
+
+//Chandelier
+function shootChandelier() {
+    if (readStatus("ammo") >= 1 ) {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }  
+        document.getElementById("chandelierHanging").style.visibility="hidden";
+        document.getElementById("fB1A").style.visibility="hidden";
+        document.getElementById("fB2A").style.visibility="hidden";
+        document.getElementById("fFA").style.visibility="hidden";
+        document.getElementById("fB1D").style.visibility="visible";
+        document.getElementById("fB2D").style.visibility="visible";
+        document.getElementById("fFD").style.visibility="visible";
+        document.getElementById("toBalcony").style.visibility="visible";
+        document.getElementById("chandelierDropped").style.visibility="visible";
+        let ammo = readStatus ("ammo");
+        ammo --;
+        writeStatus("ammo", ammo);
+        let gun = readStatus ("gun");
+        gun += +5;
+        writeStatus("gun", gun);//gun should be 6 at this state.
+    } else {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Rachel: I am so sorry it had to be this way. I should have ended your misery.");
+        alert("Uncle: It... It's okey my dear Rachel. *Cough* *Cough* It's okey.");
+        //old man crying sound effect
+        //put empty gun sound effect
+    }
+}
+//FBoss1
+function shootFinalBoss1() {
+    if(readStatus("ammo") >= 1) {
+        document.getElementsByClassName("finalAim")[1].style.visibility="hidden";
+        document.getElementById("fB1A").style.visibility="hidden";
+        document.getElementById("fB1D").style.visibility="visible";
+        let ammo = readStatus ("ammo");
+        ammo --;
+        writeStatus("ammo", ammo);
+        let gun = readStatus ("gun");
+        gun += +2;
+        writeStatus("gun", gun);
+            if(readStatus("gun") >= 5) {
+                document.getElementById("toBalcony").style.visibility="visible";
+            }
+    } else {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Ending2");
+        //put empty gun sound effect
+    }
+    
+}
+
+//FBoss1
+function shootFinalBoss2() {
+    if(readStatus("ammo") >= 1) {
+        document.getElementsByClassName("finalAim")[3].style.visibility="hidden";
+        document.getElementById("fB2A").style.visibility="hidden";
+        document.getElementById("fB2D").style.visibility="visible";
+        let ammo = readStatus ("ammo");
+        ammo --;
+        writeStatus("ammo", ammo);
+        let gun = readStatus ("gun");
+        gun += +2;
+        writeStatus("gun", gun);
+            if(readStatus("gun") >= 5) {
+                document.getElementById("toBalcony").style.visibility="visible";
+            }
+    } else {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Ending2");
+        //put empty gun sound effect
+    }
+    
+}
+
+//FFriend
+function shootFinalFriend() {
+    if(readStatus("ammo") >= 1) {
+        document.getElementsByClassName("finalAim")[2].style.visibility="hidden";
+        document.getElementById("fFA").style.visibility="hidden";
+        document.getElementById("fFD").style.visibility="visible";
+        let ammo = readStatus ("ammo");
+        ammo --;
+        writeStatus("ammo", ammo);
+        let gun = readStatus ("gun");
+        gun += +1;
+        writeStatus("gun", gun);
+            if(readStatus("gun") >= 5) {
+                document.getElementById("toBalcony").style.visibility="visible";
+            }
+    } else {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Rachel: I am so sorry it had to be this way. I should have ended your misery.");
+        alert("Uncle: It... It's okey my dear Rachel. *Cough* *Cough* It's okey.");
+        //old man crying sound effect
+        //put empty gun sound effect
+    }
+}
+
+
+function point() {
+    let gun = readStatus ("gun");
+        gun += +3;
+        writeStatus("gun", gun);
+        document.getElementById("qwerty").style.visibility="hidden";
+}
+
+
+
+document.addEventListener("keydown", function (event) {
+    if(event.key==="Control") {
+        console.log(event.key);
+        if(readStatus("gun") === 1){
+            for(let i=0; i<=3; i++) {
+                this.getElementsByClassName("finalAim")[i].style.visibility="visible";
+            }           
+        } else if (readStatus("gun") >= 9 && readStatus("gun") <= 18) {
+        console.log(event.key);
+        
+            for(let i=0; i<=1; i++) {
+                this.getElementsByClassName("killAim")[i].style.visibility="visible";
+                let gun = readStatus ("gun");
+                gun += +10;
+                writeStatus("gun", gun);
+            }
+            /* document.removeEventListener("keydown", false); */
+            
+        } 
+    }}
+);
+
+document.addEventListener("keydown", function (death) {
+    if (readStatus("gun") >= 19) {
+        if(death.key==="s" && readStatus("ammo") >= 1) {
+            this.getElementById("rachelDead").style.visibility="visible";
+            this.getElementById("rachelAlive").style.visibility="hidden";
+            for(let i=0; i<=1; i++) {
+                document.getElementsByClassName("killAim")[i].style.visibility="hidden";
+            }   
+            let ammo = readStatus ("ammo");
+            ammo --;
+            writeStatus("ammo", ammo); 
+            alert("Ending3");
+            //gunshot sound effect
+
+        } else if (death.key==="k" && readStatus("ammo") >= 1 && bone===2) {
+            this.getElementById("billDead").style.visibility="visible";
+            this.getElementById("billAlive").style.visibility="hidden";
+            for(let i=0; i<=1; i++) {
+                document.getElementsByClassName("killAim")[i].style.visibility="hidden";
+            }
+            let ammo = readStatus ("ammo");
+            ammo --;
+            writeStatus("ammo", ammo); 
+            alert("Ending6");
+            //gunshot sound effect
+        } else if (death.key==="k" && readStatus("ammo") >= 1 && bone !=2) {
+            this.getElementById("billDead").style.visibility="visible";
+            this.getElementById("billAlive").style.visibility="hidden";
+            for(let i=0; i<=1; i++) {
+                document.getElementsByClassName("killAim")[i].style.visibility="hidden";
+            }  
+            let ammo = readStatus ("ammo");
+            ammo --;
+            writeStatus("ammo", ammo);
+            alert("Ending5");
+            //gunshot sound effect
+        } else if ((death.key==="k" || death.key==="s") && readStatus("ammo") <= 0) {
+            
+            //empty gun sound effect
+            alert("Ending4");
+        }
+    }
+});
