@@ -13,8 +13,8 @@ intilizeStatus ({
     linear: 0,
     moxie: 0,
     bone: 0,
-    ammo: 2,
-    gun: 1,
+    ammo: 0,
+    gun: 0,
 });
 
 function readStatus(key) {
@@ -97,13 +97,16 @@ function studyRoom() {
     }
 }
 
+
+
+
+
+
 //diningRoom Scene
 /* if (readStatus("moxie") > 0) {
     document.getElementById("key_img").style.visibility="visible";
  } */
 /* document.addEventListener("click", myScript); */
-
-
 function chalice() {
     let chalice;
     chalice = confirm("Butler: Would you like to have some wine while you're waiting for your uncle, my dear?");
@@ -258,6 +261,8 @@ function takeMansionKey() {
         document.getElementById("mansionKeyImg").style.visibility="hidden";    
 }
 
+
+
 //studyRoom
 //1) Dog Mechanics
 function feed() {
@@ -294,7 +299,9 @@ function pet() {
         audio9.play();
     }, 750);
 }
-
+function checkDrawer() {
+    
+}
 
 
 
@@ -368,13 +375,29 @@ function shootChandelier() {
         let gun = readStatus ("gun");
         gun += +5;
         writeStatus("gun", gun);//gun should be 6 at this state.
-    } else {
+    } else if (readStatus("ammo") === 0 && readStatus("gun") === 5) {
         for(let i=0; i<=3; i++) {
             document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
         }
         alert("Rachel: I am so sorry it had to be this way. I should have ended your misery.");
         alert("Uncle: It... It's okey my dear Rachel. *Cough* *Cough* It's okey.");
+        document.getElementById("toBalcony").style.visibility="visible";
         //old man crying sound effect
+        //put empty gun sound effect
+    } else if (readStatus("ammo") === 0 && readStatus("gun") === 3) {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Rachel: I am so sorry it had to be this way. I should have ended your misery.");
+        alert("Uncle: It... It's okey my dear Rachel. *Cough* *Cough* It's okey.");
+        alert("Ending2");
+        //old man crying sound effect
+        //put empty gun sound effect
+    } else if (readStatus("ammo") === 0 && (readStatus("gun") === 4 || readStatus("gun") === 2)) {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Ending2");
         //put empty gun sound effect
     }
 }
@@ -402,8 +425,7 @@ function shootFinalBoss1() {
     }
     
 }
-
-//FBoss1
+//FBoss2
 function shootFinalBoss2() {
     if(readStatus("ammo") >= 1) {
         document.getElementsByClassName("finalAim")[3].style.visibility="hidden";
@@ -427,7 +449,6 @@ function shootFinalBoss2() {
     }
     
 }
-
 //FFriend
 function shootFinalFriend() {
     if(readStatus("ammo") >= 1) {
@@ -443,6 +464,15 @@ function shootFinalFriend() {
             if(readStatus("gun") >= 5) {
                 document.getElementById("toBalcony").style.visibility="visible";
             }
+    } else if (readStatus("ammo") === 0 && readStatus("gun") === 3) {
+        for(let i=0; i<=3; i++) {
+            document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
+        }
+        alert("Rachel: I am so sorry it had to be this way. I should have ended your misery.");
+        alert("Uncle: It... It's okey my dear Rachel. *Cough* *Cough* It's okey.");
+        //old man crying sound effect
+        //put empty gun sound effect
+        alert("Ending2");
     } else {
         for(let i=0; i<=3; i++) {
             document.getElementsByClassName("finalAim")[i].style.visibility="hidden";
@@ -455,15 +485,10 @@ function shootFinalFriend() {
 }
 
 
-function point() {
-    let gun = readStatus ("gun");
-        gun += +3;
-        writeStatus("gun", gun);
-        document.getElementById("qwerty").style.visibility="hidden";
-}
 
 
 
+//Gun functions(in order for gun functions to run, gun at least have to be 1 which means gun has to be found.) If gun is not found. Then protogonist shouldn't be able to come to this room. Or use different html with a same setting.
 document.addEventListener("keydown", function (event) {
     if(event.key==="Control") {
         console.log(event.key);
@@ -486,6 +511,14 @@ document.addEventListener("keydown", function (event) {
     }}
 );
 
+//Balcony
+function point() {
+    let gun = readStatus ("gun");
+        gun += +4;
+        writeStatus("gun", gun);
+        document.getElementById("confront").style.visibility="hidden";
+}
+
 document.addEventListener("keydown", function (death) {
     if (readStatus("gun") >= 19) {
         if(death.key==="s" && readStatus("ammo") >= 1) {
@@ -497,10 +530,13 @@ document.addEventListener("keydown", function (death) {
             let ammo = readStatus ("ammo");
             ammo --;
             writeStatus("ammo", ammo); 
+            let gun = readStatus ("gun");
+            gun += -30;//because i don't want this function to run again
+            writeStatus("gun", gun);
             alert("Ending3");
             //gunshot sound effect
 
-        } else if (death.key==="k" && readStatus("ammo") >= 1 && bone===2) {
+        } else if (death.key==="k" && readStatus("ammo") >= 1 && readStatus("bone")===2) {
             this.getElementById("billDead").style.visibility="visible";
             this.getElementById("billAlive").style.visibility="hidden";
             for(let i=0; i<=1; i++) {
@@ -509,9 +545,12 @@ document.addEventListener("keydown", function (death) {
             let ammo = readStatus ("ammo");
             ammo --;
             writeStatus("ammo", ammo); 
-            alert("Ending6");
+            let gun = readStatus ("gun");
+            gun += -30;//because i don't want this function to run again
+            writeStatus("gun", gun);
+            alert("Ending6 - drJohnTuna");
             //gunshot sound effect
-        } else if (death.key==="k" && readStatus("ammo") >= 1 && bone !=2) {
+        } else if (death.key==="k" && readStatus("ammo") >= 1 && readStatus("bone") !=2) {
             this.getElementById("billDead").style.visibility="visible";
             this.getElementById("billAlive").style.visibility="hidden";
             for(let i=0; i<=1; i++) {
@@ -520,10 +559,15 @@ document.addEventListener("keydown", function (death) {
             let ammo = readStatus ("ammo");
             ammo --;
             writeStatus("ammo", ammo);
+            let gun = readStatus ("gun");
+            gun += -30;//because i don't want this function to run again
+            writeStatus("gun", gun);
             alert("Ending5");
             //gunshot sound effect
         } else if ((death.key==="k" || death.key==="s") && readStatus("ammo") <= 0) {
-            
+            let gun = readStatus ("gun");
+            gun += -30;//because i don't want this function to run again
+            writeStatus("gun", gun);
             //empty gun sound effect
             alert("Ending4");
         }
