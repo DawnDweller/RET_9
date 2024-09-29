@@ -7,3 +7,29 @@ html {
 #dogThanks {
     visibility: hidden;
 }
+#ending1Anchor {
+    visibility: hidden;
+}
+
+#gunImg{
+    visibility: hidden;
+}
+#insideGunDrawer {
+    visibility: hidden;
+}
+#drawerButton2 {
+    visibility: hidden;
+}
+#documenOnTheDesk {
+    visibility: hidden;
+}
+
+#hiddenLadderToUp {
+    visibility: hidden;
+}
+#bedRoomAnchorButton {
+    visibility: hidden;
+}
+#bedRoomAnchor {
+    visibility: hidden;
+}

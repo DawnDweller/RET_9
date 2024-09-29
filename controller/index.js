@@ -200,7 +200,7 @@ function toKrypt() {
         document.getElementById("riverButton").style.visibility="hidden";
         document.getElementById("riverAchor").style.visibility="visible";
     } else {
-        alert("Rachel to herself: There seems to be a skull carving on the tree's surface.");
+        alert("Rachel: There seems to be a skull carving on the fence gate's surface.");
     }
 }
 
@@ -210,7 +210,7 @@ function dig1() {
         document.getElementById("tombstoneImg").style.visibility="visible";
         document.getElementById("dig2button").style.visibility="visible";
     }else{
-        alert("Rachel: There is nothing I could find here.")
+        alert("Rachel: There is nothing left here to find.")
     }
     
 }
@@ -263,7 +263,7 @@ function takeMansionKey() {
 
 
 
-//studyRoom
+//----   STUDY ROOM   ----
 //1) Dog Mechanics
 function feed() {
     var question1 = confirm("Something inside... Should I check?");
@@ -300,7 +300,52 @@ function pet() {
     }, 750);
 }
 function checkDrawer() {
-    
+    document.getElementById("drawerButton").style.visibility="hidden";
+    document.getElementById("insideGunDrawer").style.visibility="visible";
+    document.getElementById("gunImg").style.visibility="visible";
+    document.getElementById("drawerButton2").style.visibility="visible";
+}
+function checkDrawer2() {
+    document.getElementById("insideGunDrawer").style.visibility="hidden";
+    document.getElementById("gunImg").style.visibility="hidden";
+    document.getElementById("drawerButton2").style.visibility="hidden";
+}
+function takeGun() {
+    document.getElementById("gunImg").style.visibility="hidden";
+    let gun = readStatus ("gun");
+        gun += +1;
+        writeStatus("gun", gun);//gun should be equel to 1 at this state.
+}
+
+function searchPockets() {
+    if (readStatus("ammo") >= 1) {
+    alert("Rachel: There is nothing else.");
+    } else {
+        let ammo0 = confirm("Rachel: I can feel some cold material inside its pocket. Should I take it?");
+        if(ammo0 === true) {
+            alert("You have found a .45 caliber revolver ammunition.");
+            document.getElementById("coatOnPoleHanger").style.visibility="hidden";
+            let ammo = readStatus ("ammo");
+                ammo += +1;
+                writeStatus("ammo", ammo);//ammo should be equel to 1 at this state.
+        } else {
+            document.getElementById("coatOnPoleHanger").style.visibility="hidden";
+            alert("You have left it.");
+        }
+    }
+}
+//2) firePlace
+function poke() {
+    if (readStatus("linear") === "?"){//if poker is found this will be true
+        let linear = readStatus ("linear");
+                linear += +1;
+                writeStatus("linear", linear);
+        alert("You have pushed the secret button.");
+        document.getElementById("hiddenLadderToUp").style.visibility="visible";
+        document.getElementById("bedRoomAnchorButton").style.visibility="visible";
+    } else {
+        alert("The warm flicker of the flames calm you down.");
+    }
 }
 
 

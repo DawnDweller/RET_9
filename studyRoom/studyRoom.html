@@ -7,21 +7,35 @@
     <link rel="stylesheet" href="studyRoom.css">
 </head>
 <body>
-    <a href="../ending1/ending1.html">Back to Main Hole</a>
+    <img src="../images/studyRoomBGI.png" alt="studyRoomBackgroundImage">
 
+    <!-- second time entring studyRoom will result ending1 -->
+    <a id="ending1Anchor" href="../ending1/ending1.html">Back to Main Hole</a>
+    <a id="studyRoomToMainHoleAnchor" href="../mainHole2/mainHole2.html">Back to Main Hole</a>
+    
     <!-- fireplace -->
-    <img src="" alt="extinguishedFirePlace">
-    <img src="" alt="lightTheFireplace">
-    <img src="" alt="hiddenLadderToUp">
-    <!-- desk DON'T USE CONTROLLER FOLDER -->
-    <button onclick="readNotes()" id="notes">check</button>
-    <!-- gun -->
-    <button onclick="checkDrawer()" id="drawer">check</button>
-    <img id="ammo0" src="../images/drawer0.png" alt="ammoOnly0">
-    <img id="ammo1" src="../images/drawer1.png" alt="ammoOnly2">
-    <img id="gun" src="../images/gun.png" alt="gun">
+    <img onclick="poke()" src="../images/firePlace.gif" alt="fireGif">
 
-    <!-- ending5 shoot the chandelier to kill them all(withDogFed)  -->
+    <!-- hidden ladder to up -->
+    <img id="hiddenLadderToUp" onclick="checkSecretLadder()" src="../images/hiddenLadderToUp.png" alt="hiddenLadderToUp"><!-- This ladder embedded inside the wall -->
+    <button id="bedRoomAnchorButton" onclick="decideGoingBedroom()">^</button>
+    <a id="bedRoomAnchor" href="../darkCabinet/darkCabinet.html">^</a>
+    <!-- after a finding a poker character should be able to poke through inside the chimney to reach a secret button that makes embeded ladder to appear -->
+
+    <!-- desk DON'T USE CONTROLLER FOLDER -->
+    <button id="studyRoomNoteAppearButton" onclick="readNotes()">Read</button>
+    <img id="documenOnTheDesk" onclick="readNotes2()" src="../images/documenOnTheDesk.png" alt="Report Document">
+
+    <!-- ammo0 -->
+    <button id="coatOnPoleHanger" onclick="searchPockets()">...</button>
+
+    <!-- gun -->
+    <button id="drawerButton" onclick="checkDrawer()">Check</button>
+    <button id="drawerButton2" onclick="checkDrawer2()">Quit</button>
+    
+    <img id="insideGunDrawer" src="../images/insideGunDrawer.png" alt="drawerWithAGun">
+    <img id="gunImg" onclick="takeGun()" src="../images/gun.png" alt="gun">
+
     <!-- dog -->
     <img onclick="feed()" id="dog1" src="../images/dog1.gif" alt="hidingDogGif">
     <img onclick="pet()" id="dog2" src="../images/dog2.gif" alt="dogWithBoneGif">
