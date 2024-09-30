@@ -1,3 +1,18 @@
-#ammo1 {
+#librarySecretLadderDrop {
+    visibility: hidden;
+}
+#librarySecretLadder {
+    visibility: hidden;
+}
+#pianoRoomAnchor {
+    visibility: hidden;
+}
+#musicianJumpedDown {
+    visibility: hidden;
+}
+#musicianRun {
+    visibility: hidden;
+}
+#musicianKill {
     visibility: hidden;
 }

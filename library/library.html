@@ -8,10 +8,24 @@
 </head>
 <body>
     <img src="../images/libraryBackgroundImg.png" alt="libraryBGI">
-    <img src="../images/renkBakisi.png" alt="Colored Book" onclick="comment()">
-    <img src="" alt="bookPuzzle">
+    <img id="musicianStaring" onclick="madFace()" src="../images/musicianStaring.png" alt="musicianStaring">
+    <img id="musicianJumpedDown" src="../images/musicianJumpedDown.png" alt="musicianJumpedDown">
+    <img id="musicianRun" src="../images/musicianRun.png" alt="musicianRun">
+    <img id="musicianKill" src="../images/musicianKill.png" alt="GameOverYouReDeadTHXFORPLAYIN'">
 
-    <img id="ammo1" src="../images/drawer1.png" alt="ammoOnly2">
+    <!-- bookPuzzle -->
+    <button id="book1" onclick="bookPuzzle1()">...</button>
+    <button id="book2" onclick="bookPuzzle2()">...</button>
+    <button id="book3" onclick="bookPuzzle3()">...</button>
+    <button id="book4" onclick="bookPuzzle4()">...</button>
+    <button id="book5" onclick="bookPuzzle5()">...</button>
+    <button id="book6" onclick="bookPuzzle6()">...</button>
+    <img id="librarySecretLadderDrop" src="../images/librarySecretLadderDrop.png" alt="librarySecretLadderDrop">
+    <img id="librarySecretLadder" onclick="anchorPiano()" src="../images/librarySecretLadder.png" alt="librarySecretLadder">
+    <a id="pianoRoomAnchor" href="../pianoRoom/pianoRoom.html">Go up</a>
+
+    <!-- easter egg -->
+    <img src="../images/renkBakisi.png" alt="Colored Book" onclick="comment()">
 
     <script src="library.js" async="true"></script>
     <script src="../controller/index.js" async="true"></script>

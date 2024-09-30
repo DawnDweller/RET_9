@@ -15,6 +15,11 @@ intilizeStatus ({
     bone: 0,
     ammo: 0,
     gun: 0,
+    book1: 0,
+    book2: 0,
+    book3: 0,
+    book4: 0,
+    book5: 0,
 });
 
 function readStatus(key) {
@@ -97,8 +102,100 @@ function studyRoom() {
     }
 }
 
+//mainHole2 Scene2
+function commentOnLibraryDoor2() {
+    alert("Rachel: Door's not locked. It is too dark inside.");
+    alert("Seems like a library. Better check here too.");
+    document.getElementById("libraryDoorCheckButton").style.visibility="hidden";
+    document.getElementById("libraryAnchor").style.visibility="visible";
+}
 
+//library
+function bookPuzzle1() {
+    var audiobook1 = new Audio ("../sounds/book1.mp3");
+    audiobook1.play();
+    alert("Rachel: I pulled the book and it got stuck.");
+    document.getElementById("book1").style.visibility="hidden";
+    let book1 = readStatus ("book1");
+        book1 ++;
+        writeStatus("book1", book1);
+}
+function bookPuzzle2() {
+    if(readStatus("book1") === 1) {
+        var audiobook2 = new Audio ("../sounds/book1.mp3");
+        audiobook2.play();
+        alert("Rachel: I pulled the book and it got stuck.");
+        document.getElementById("book2").style.visibility="hidden";
+        let book2 = readStatus ("book2");
+        book2 ++;
+        writeStatus("book2", book2);
+    } else {
+        alert("Rachel: 'Running a Nation'. A book about politics. It tells about some strategies to maintain a country.");
+    }
+}
+function bookPuzzle3() {
+    if(readStatus("book2") === 1) {
+        var audiobook3 = new Audio ("../sounds/book1.mp3");
+        audiobook3.play();
+        alert("Rachel: I pulled the book and it got stuck.");
+        document.getElementById("book3").style.visibility="hidden";
+        let book3 = readStatus ("book3");
+        book3 ++;
+        writeStatus("book3", book3);
+    } else {
+        alert("Rachel: 'God's Justice'. A book about religious beliefs.");
+    }
+}
+function bookPuzzle4() {
+    if(readStatus("book3") === 1) {
+        var audiobook4 = new Audio ("../sounds/book1.mp3");
+        audiobook4.play();
+        alert("Rachel: I pulled the book and it got stuck.");
+        document.getElementById("book4").style.visibility="hidden";
+        let book4 = readStatus ("book4");
+        book4 ++;
+        writeStatus("book4", book4);
+    } else {
+        alert("Rachel: 'Cold Spring'. This book tells a love story. From the looks of it, I think it has a sad ending.");
+        alert("Rachel: To be honest, it is a surprise to find a book for entertainment since most of the books in here are academic ones. Most likely for research purposes.");
+    }
+}
+function bookPuzzle5() {
+    if(readStatus("book4") === 1) {
+        var audiobook5 = new Audio ("../sounds/book1.mp3");
+        audiobook5.play();
+        alert("Rachel: I pulled the book and it got stuck.");
+        document.getElementById("book5").style.visibility="hidden";
+        let book5 = readStatus ("book5");
+        book5 ++;
+        writeStatus("book5", book5);
+    } else {
+        alert("Rachel: I cannot pronounce this book at all. It is written a different alphabet.");
+    }
+}
+function bookPuzzle6() {
+    if(readStatus("book5") === 1) {
+        var audiobook6 = new Audio ("../sounds/book1.mp3");
+        audiobook6.play();
+        alert("Rachel: I pulled the book and it got stuck.");
+        document.getElementById("book6").style.visibility="hidden";
+        var audioLibraryLadder = new Audio ("../sounds/mechanicalCracking.mp3");
 
+        document.getElementById("librarySecretLadderDrop").style.visibility="visible";
+        setTimeout(function () {
+            document.getElementById("librarySecretLadderDrop").style.visibility="hidden";
+            document.getElementById("librarySecretLadder").style.visibility="visible";
+            audioLibraryLadder.play();
+        }, 600);
+    } else {
+        alert("Rachel: On the cover 'UP' is written. But the pages are blank.");
+    }
+}
+function anchorPiano() {
+    alert("Rachel: These books were connected to stairs mechanism? That was...");
+    alert("Rachel: ...excessive.");
+    document.getElementById("pianoRoomAnchor").style.visibility="visible";
+}
 
 
 
