@@ -20,6 +20,7 @@ intilizeStatus ({
     book3: 0,
     book4: 0,
     book5: 0,
+    fenceKey: 0,
 });
 
 function readStatus(key) {
@@ -102,10 +103,22 @@ function studyRoom() {
     }
 }
 
+
+//Piano Mechanics
+function grabFenceKey() {
+    let fenceKey = readStatus ("fenceKey");
+    fenceKey = 1;
+    writeStatus("fenceKey", fenceKey);
+    alert('Skull Carved Key found.' );
+     document.getElementById("fenceKey").style.visibility="hidden";
+ }
+
+
 //mainHole2 Scene2
 function commentOnLibraryDoor2() {
+    if (readStatus("fenceKey") === 0) {
     alert("Rachel: Door's not locked. It is too dark inside.");
-    alert("Seems like a library. Better check here too.");
+    alert("Seems like a library. Better check here too.");}
     document.getElementById("libraryDoorCheckButton").style.visibility="hidden";
     document.getElementById("libraryAnchor").style.visibility="visible";
 }
@@ -293,7 +306,7 @@ if (readStatus("linear") >= 4) {//nedense bir kez run'lakdıktan sonra sayfayı 
 
 //Crypt :) Path
 function toKrypt() {
-    if (readStatus("linear") >= 10) {
+    if (readStatus("fenceKey") === 1) {
         document.getElementById("riverButton").style.visibility="hidden";
         document.getElementById("riverAchor").style.visibility="visible";
     } else {

@@ -1,9 +1,9 @@
 function comment() {
     alert("Rachel: An intriguing book.");
-    alert("Rachel: Unfortunately the amount of meticulously intricate details makes it unreadable.");
+    alert("Rachel: Unfortunately the amount of meticulously intricate details make it unreadable.");
 }
 function madFace() {
-    alert("Rachel: I can see someone staring at me from the upstairs. He does not look frienly.");
+    alert("Rachel: I can see someone staring at me from the upstairs. He does not look friendly.");
     let deathWish = confirm("Rachel: I wonder what would happen if I call out?");
     if(deathWish === true) {
         var madFaceLaught = new Audio ("../sounds/madFaceLaught.mp3");

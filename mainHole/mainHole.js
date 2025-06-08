@@ -5,4 +5,5 @@ function commentOnBrokenStairs() {
 function commentOnLibraryDoor() {
     alert("Rachel: Door's not locked. It is too dark inside.");
     alert("Seems like a library. I have no reason to wander this dark place.");
+
 }
