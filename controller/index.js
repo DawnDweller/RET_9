@@ -314,10 +314,10 @@ function bone() {
 }
 
 //Linear Progress Tracker
-/*if (readStatus("linear") >= 4) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde şartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
+if (readStatus("linear") >= 4 && readStatus("linear") < 6) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde şartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
     document.getElementById("backDoor").style.visibility="visible";
     document.getElementById("getInside").style.visibility="hidden";
-}*/
+}
 
 
 //Crypt :) Path
@@ -486,6 +486,7 @@ function grabNecklace() {
     writeStatus("necklace", necklace);
     alert("Rachel: Well... Didn't notice this here before.");
     alert("You have found the half of your necklace.");
+    document.getElementById("halfNecklace").style.visibility="hidden";
 }
 
 
