@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Study Room</title>
+    <link rel="stylesheet" href="studyRoom2.css">
+</head>
+<body>
+    <img src="../images/studyRoomBGI.png" alt="studyRoomBackgroundImage">
+
+    <!-- second time entring studyRoom will result ending1 -->
+    <a id="ending1Anchor" href="../ending1/ending1.html">Back to Main Hole</a>
+    <a id="studyRoomToMainHoleAnchor" href="../mainHole3/mainHole3.html">Back to Main Hole</a>
+    
+    <!-- fireplace -->
+    <img onclick="poke()" src="../images/firePlace.gif" alt="fireGif">
+
+    <!-- hidden ladder to up -->
+    <img id="hiddenLadderToUp" onclick="checkSecretLadder()" src="../images/hiddenLadderToUp.png" alt="hiddenLadderToUp"><!-- This ladder embedded inside the wall -->
+    <button id="bedRoomAnchorButton" onclick="decideGoingBedroom()">^</button>
+    <a id="bedRoomAnchor" href="../darkCabinet/darkCabinet.html">^</a>
+    <!-- after a finding a poker character should be able to poke through inside the chimney to reach a secret button that makes embeded ladder to appear -->
+
+    <!-- desk DON'T USE CONTROLLER FOLDER -->
+    <button id="studyRoomNoteAppearButton" onclick="readNotes()">Read</button>
+    <img id="documenOnTheDesk" onclick="readNotes2()" src="../images/documenOnTheDesk.png" alt="Report Document">
+
+    <!-- dog -->
+    <img onclick="pet()" id="dog2" src="../images/dog2.gif" alt="dogWithBoneGif">
+    <img id="dogThanks" src="../images/dog3.gif" alt="happyDogGif">
+
+    <script src="../controller/index.js" async="true"></script>
+    <script src="studyRoom2.js" async="true"></script>
+</body>
+</html>

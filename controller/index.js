@@ -1,3 +1,4 @@
+//Note to myself: You need to make protegonist talk with hunter and receive the knife. Also need to find 1 more ammo from anywhere in the game. After that delete this note.
 // General Functions for Status
 function intilizeStatus (status) {
 
@@ -7,6 +8,7 @@ function intilizeStatus (status) {
     window.sessionStorage.setItem("status", JSON.stringify(newStatus));
 
 }
+
 
 intilizeStatus ({
     sharpness: 0,
@@ -21,6 +23,8 @@ intilizeStatus ({
     book4: 0,
     book5: 0,
     fenceKey: 0,
+    necklace: 0,
+    hunterKnife: 0,
 });
 
 function readStatus(key) {
@@ -111,6 +115,7 @@ function grabFenceKey() {
     writeStatus("fenceKey", fenceKey);
     alert('Skull Carved Key found.' );
      document.getElementById("fenceKey").style.visibility="hidden";
+     audio5.play();
  }
 
 
@@ -121,6 +126,16 @@ function commentOnLibraryDoor2() {
     alert("Seems like a library. Better check here too.");}
     document.getElementById("libraryDoorCheckButton").style.visibility="hidden";
     document.getElementById("libraryAnchor").style.visibility="visible";
+}
+
+//Church
+function takePoker() {
+    let linear = readStatus ("linear");
+    linear ++;
+    writeStatus("linear", linear);
+    alert("Rachel: This might come in handy.");
+    alert("Poker found.");
+    document.getElementById("poker").style.visibility="hidden";
 }
 
 //library
@@ -299,14 +314,16 @@ function bone() {
 }
 
 //Linear Progress Tracker
-if (readStatus("linear") >= 4) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde şartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
+/*if (readStatus("linear") >= 4) {//nedense bir kez run'lakdıktan sonra sayfayı geri alıp denediğimde şartı sağlamasına rağmen bu fonksiyon çalışmıyor. Çok ilginç bu dosyanın 76:39'una hata veriyor.
     document.getElementById("backDoor").style.visibility="visible";
     document.getElementById("getInside").style.visibility="hidden";
-}
+}*/
+
 
 //Crypt :) Path
 function toKrypt() {
     if (readStatus("fenceKey") === 1) {
+        alert("You have used Skull Carved Fence Key.");
         document.getElementById("riverButton").style.visibility="hidden";
         document.getElementById("riverAchor").style.visibility="visible";
     } else {
@@ -446,20 +463,30 @@ function searchPockets() {
 }
 //2) firePlace
 function poke() {
-    if (readStatus("linear") === "?"){//if poker is found this will be true
+    if (readStatus("linear") === 6){//if poker is found this will be true
         let linear = readStatus ("linear");
                 linear += +1;
                 writeStatus("linear", linear);
+        alert("The warm flicker of the flames calm you down.");
+        pokerReach = confirm("You can reach beyond the dancing flames with the poker. Will you use it?");
+    if(pokerReach==true){
         alert("You have pushed the secret button.");
         document.getElementById("hiddenLadderToUp").style.visibility="visible";
         document.getElementById("bedRoomAnchorButton").style.visibility="visible";
-    } else {
+    }    } else {
         alert("The warm flicker of the flames calm you down.");
     }
 }
 
 
-
+//Bridge
+function grabNecklace() {
+    let necklace = readStatus("necklace");
+    necklace = 1;
+    writeStatus("necklace", necklace);
+    alert("Rachel: Well... Didn't notice this here before.");
+    alert("You have found the half of your necklace.");
+}
 
 
 
@@ -471,7 +498,7 @@ function poke() {
 //FINALLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
 //bedRoomFinal
 
-/*     document.addEventListener("keydown", function (event) {
+    /* document.addEventListener("keydown", function (event) {
         if(readStatus("gun") === 1) {
             console.log(event.key);
             if(event.key==="Control"){
@@ -666,6 +693,11 @@ document.addEventListener("keydown", function (event) {
     }}
 );
 
+
+//press: Control   k    s    
+
+
+
 //Balcony
 function point() {
     let gun = readStatus ("gun");
@@ -703,8 +735,10 @@ document.addEventListener("keydown", function (death) {
             let gun = readStatus ("gun");
             gun += -30;//because i don't want this function to run again
             writeStatus("gun", gun);
-            alert("Ending6 - drJohnTuna");
-            //gunshot sound effect
+            alert("Ending6 - drJohnTuna");//True ending.
+            //gunshot sound effect 
+            if(readStatus("necklace") === 1){    //True ending Extra!
+            document.getElementById("villageBurn").style.visibility="visible";}
         } else if (death.key==="k" && readStatus("ammo") >= 1 && readStatus("bone") !=2) {
             this.getElementById("billDead").style.visibility="visible";
             this.getElementById("billAlive").style.visibility="hidden";
@@ -728,3 +762,21 @@ document.addEventListener("keydown", function (death) {
         }
     }
 });
+
+
+
+
+//Village Burn True Ending Extra!
+function cutRopes() {
+    let cutting;
+    cutting = confirm("Attempt to cut the ropes?");
+    if(cutting==true){
+         if(readStatus("hunterKnife") === 1){
+            alert("You have used hunter's knife.");
+            //display true ending video. Escapes with the dog by plane. Has the necklace.       
+        } else {
+            alert("You could not release yourself.");
+            // protegonist dies.
+        }
+}
+}
